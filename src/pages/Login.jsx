@@ -18,6 +18,10 @@ const Login = () => {
         body: JSON.stringify({ email, password })
       });
 
+      if (!response.ok) {
+        throw new Error("Login failed");
+      }
+
       const data = await response.json();
       if (data.access_token) {
         localStorage.setItem("token", data.access_token);

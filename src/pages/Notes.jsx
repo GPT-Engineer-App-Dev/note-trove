@@ -23,10 +23,15 @@ const Notes = () => {
           }
         });
 
+        if (!response.ok) {
+          throw new Error("Failed to fetch notes");
+        }
+
         const data = await response.json();
         setNotes(data);
       } catch (error) {
         console.error("Error fetching notes:", error);
+        alert("An error occurred while fetching notes. Please try again.");
       }
     };
 
